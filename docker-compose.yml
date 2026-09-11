@@ -1,0 +1,20 @@
+services:
+  spotjspf:
+    build: .
+    container_name: spotjspf
+    restart: unless-stopped
+    ports:
+      - "8090:8080"
+    environment:
+      HOST_DOWNLOAD_DIR: /downloads
+      HOST_DATA_DIR: /data
+      CONCURRENCY: 2
+      SPOTDL_FORMAT: mp3
+      SPOTDL_ARGS:
+      MAX_HISTORY: 200
+      MB_LOOKUP_ENABLED: true
+      MB_USER_AGENT: spotjspf/1.0 ( https://github.com/ )
+      MB_RATE_LIMIT_MS: 1000
+    volumes:
+      - /home/$USER/Downloads:/downloads
+      - /home/$USER/Data:/data

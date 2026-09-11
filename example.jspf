@@ -1,0 +1,19 @@
+{
+  "playlist": {
+    "title": "Example Playlist",
+    "creator": "spotjspf",
+    "track": [
+      {
+        "title": "Bohemian Rhapsody",
+        "creator": "Queen",
+        "album": "A Night at the Opera",
+        "identifier": ["spotify:track:7tFiyTwD0nx5a1eklYtX2J"]
+      },
+      {
+        "title": "Billie Jean",
+        "creator": "Michael Jackson",
+        "album": "Thriller"
+      }
+    ]
+  }
+}
