@@ -42,6 +42,10 @@ MusicBrainz's API usage policy requires a descriptive User-Agent and a rate limi
 | `MB_USER_AGENT`      | *(placeholder)* | **Change this** — MusicBrainz asks for contact info (eg. github) |
 | `MB_RATE_LIMIT_MS`   | `1000`       | Minimum ms between MusicBrainz API calls                          |
 
+## Output Template
+
+- /{artists}/{album}/{track-number} - {title}.{SPOTDL_FORMAT}"
+
 ## Local dev (without Docker)
 
 Requires Go 1.22+, plus `spotdl` and `ffmpeg` installed and on your `PATH`.
@@ -56,3 +60,4 @@ DOWNLOAD_DIR=./downloads DATA_DIR=./data ./spotjspf
 - Uploads are capped at 10 MB (plenty for a JSPF playlist).
 - Each download job runs with a 20-minute timeout.
 - The JSPF parser is lenient about `identifier`/`location` being either a single string or an array, since real-world exporters aren't all spec-perfect.
+- utputTemplate := d.downloadDir + "/{artists}/{album}/{track-number} - {title}.{output-ext}"

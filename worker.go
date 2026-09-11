@@ -67,7 +67,7 @@ func (d *Downloader) run(job *Job) {
 		return
 	}
 
-	outputTemplate := d.downloadDir + "/{artists} - {title}.{output-ext}"
+	outputTemplate := d.downloadDir + "/{artists}/{album}/{track-number} - {title}.{output-ext}"
 	args := []string{"download", job.Query, "--output", outputTemplate, "--format", d.format}
 	args = append(args, d.extraArgs...)
 
