@@ -20,7 +20,7 @@ Then open `http://localhost:8090` (or whatever `PORT` you set), and upload a `.j
 For each track, spotjspf resolves a query for `spotdl download` in this order:
 
 1. **Direct Spotify link** — if the track's `identifier` or `location` already contains a Spotify URL/URI (`open.spotify.com/...` or `spotify:track:...`), that's used as-is. Most accurate, no lookup needed.
-2. **MusicBrainz \u2192 Spotify** — if instead the track has a MusicBrainz recording ID (common in ListenBrainz playlist exports, e.g. `identifier: ["https://musicbrainz.org/recording/<mbid>"]`), spotjspf looks the recording up on the MusicBrainz API and checks its relationships for a linked Spotify track. If found, that exact Spotify URL is used. This lookup happens right before the download starts (not at upload time), so uploads still queue instantly.
+2. **MusicBrainz - Spotify** — if instead the track has a MusicBrainz recording ID (common in ListenBrainz playlist exports, e.g. `identifier: ["https://musicbrainz.org/recording/<mbid>"]`), spotjspf looks the recording up on the MusicBrainz API and checks its relationships for a linked Spotify track. If found, that exact Spotify URL is used. This lookup happens right before the download starts (not at upload time), so uploads still queue instantly.
 3. **Text search** — otherwise (or if the MusicBrainz lookup finds no Spotify link), it falls back to `"<creator> - <title>"` as a text search. If only a title exists, it searches on the title alone.
 
 The "recent downloads" list shows a **Match** column so you can see which path was used for each track (`Spotify link`, `MusicBrainz → Spotify`, or `Text search`).
