@@ -60,4 +60,3 @@ DOWNLOAD_DIR=./downloads DATA_DIR=./data ./spotjspf
 - Uploads are capped at 10 MB (plenty for a JSPF playlist).
 - Each download job runs with a 20-minute timeout.
 - The JSPF parser is lenient about `identifier`/`location` being either a single string or an array, since real-world exporters aren't all spec-perfect.
-- utputTemplate := d.downloadDir + "/{artists}/{album}/{track-number} - {title}.{output-ext}"
