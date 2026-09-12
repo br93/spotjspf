@@ -10,13 +10,6 @@ import (
 
 var ErrNoUsableTracks = errors.New("no usable tracks found in playlist")
 
-type Result struct {
-	PlaylistTitle string
-	Queued        int
-	Skipped       int
-	Jobs          []*job.Job
-}
-
 type Service struct {
 	repo     ports.JobRepository
 	enqueuer ports.JobEnqueuer
@@ -26,7 +19,7 @@ func NewService(repo ports.JobRepository, enqueuer ports.JobEnqueuer) *Service {
 	return &Service{repo: repo, enqueuer: enqueuer}
 }
 
-func (s *Service) IngestPlaylist(data []byte) (*Result, error) {
+func (s *Service) IngestPlaylist(data []byte) (*ports.PlaylistIngestResult, error) {
 	parsed, err := playlist.Parse(data)
 	if err != nil {
 		return nil, err
@@ -51,7 +44,7 @@ func (s *Service) IngestPlaylist(data []byte) (*Result, error) {
 		return nil, ErrNoUsableTracks
 	}
 
-	return &Result{
+	return &ports.PlaylistIngestResult{
 		PlaylistTitle: parsed.Playlist.Title,
 		Queued:        len(created),
 		Skipped:       skipped,
