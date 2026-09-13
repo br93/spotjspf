@@ -5,18 +5,20 @@ import (
 	"log"
 	"net/http"
 
+	"spotjspf/internal/application/ingest"
 	"spotjspf/internal/ports"
 )
 
+//go:embed web/index.html
 var webFS embed.FS
 
 type Server struct {
-	ingest ports.PlaylistIngester
+	ingest *ingest.Service
 	repo   ports.JobRepository
 }
 
-func NewServer(ingest ports.PlaylistIngester, repo ports.JobRepository) *Server {
-	return &Server{ingest: ingest, repo: repo}
+func NewServer(ingestSvc *ingest.Service, repo ports.JobRepository) *Server {
+	return &Server{ingest: ingestSvc, repo: repo}
 }
 
 func (s *Server) Handler() http.Handler {
