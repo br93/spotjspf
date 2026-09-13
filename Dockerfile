@@ -1,9 +1,9 @@
 FROM golang:1.22-alpine AS builder
 WORKDIR /src
 COPY go.mod ./
-COPY *.go ./
-COPY web ./web
-RUN CGO_ENABLED=0 GOOS=linux go build -ldflags="-s -w" -o /out/spotjspf .
+COPY cmd ./cmd
+COPY internal ./internal
+RUN CGO_ENABLED=0 GOOS=linux go build -ldflags="-s -w" -o /out/spotjspf ./cmd/spotjspf
 
 FROM python:3.12-slim
 
